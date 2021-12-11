@@ -98,9 +98,9 @@ iface eth3 inet static
 ```
 #auto eth0
 #iface eth0 inet static
- #      address 10.21.0.130
- #      netmask 255.255.255.128
-  #     gateway 10.21.0.129
+      address 10.21.0.130
+      netmask 255.255.255.128
+      gateway 10.21.0.129
 
 auto eth0
 iface eth0 inet dhcp
@@ -110,9 +110,9 @@ iface eth0 inet dhcp
 ```
 #auto eth0
 #iface eth0 inet static
-#       address 10.21.4.2
-#      netmask 255.255.252.0
-#       gateway 10.21.4.1
+      address 10.21.4.2
+      netmask 255.255.252.0
+      gateway 10.21.4.1
 
 auto eth0
 iface eth0 inet dhcp
@@ -202,6 +202,7 @@ route add -net 10.21.0.16 netmask 255.255.255.248 gw 10.21.0.2
 <b> Dokumentasi </b>
 
 ** IP eth0 akan selalu berganti ketika restart node pada foosha atau restart GNS3 dengan rentang IP yang sudah dijelaskan
+
 ** `ip a` pada Foosha untuk mengetahui eth0
 
 ## 2. Kalian diminta untuk mendrop semua akses HTTP dari luar Topologi kalian pada server yang memiliki ip DHCP dan DNS Server demi menjaga keamanan.
