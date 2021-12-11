@@ -370,9 +370,9 @@ Keterangan:
         
  <b> Testing </b>
  - Fukurou
-        gambar
+        ![Fukurou](img/5-Fukurou.PNG)
  - Elena
-        gambar
+        ![Elena](img/5-Elena.PNG)
 
 ## 6.   Karena kita memiliki 2 Web Server, Luffy ingin Guanhao disetting sehingga setiap request dari client yang mengakses DNS Server akan didistribusikan secara bergantian pada Jorge dan Maingate
 <b> Pada Doriki </b>
@@ -422,7 +422,5 @@ d.  Command `nc 10.21.8.1 80` pada **Elena** dan **Fukurou**
 e.  Masukkan random input pada **Elena** dan **Fukurou**, maka akan muncul secara bergantian 
 
 <b> Dokumentasi Testing </b>
-- Fukurou
-        gambar
- - Elena
-        gambar
+- Fukurou dan Elena
+        ![Fukurou dan Elena](img/6-Elena and Fukurou.PNG)
