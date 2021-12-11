@@ -423,4 +423,4 @@ e.  Masukkan random input pada **Elena** dan **Fukurou**, maka akan muncul secar
 
 <b> Dokumentasi Testing </b>
 - Fukurou dan Elena
-        ![Fukurou dan Elena](img/6-Elena and Fukurou.PNG)
+        ![Fukurou dan Elena](img/6-ElenaAndFukurou.png)
