@@ -206,6 +206,15 @@ route add -net 10.21.0.16 netmask 255.255.255.248 gw 10.21.0.2
 ** `ip a` pada Foosha untuk mengetahui eth0 
 
 ## 2. Kalian diminta untuk mendrop semua akses HTTP dari luar Topologi kalian pada server yang memiliki ip DHCP dan DNS Server demi menjaga keamanan.
+- Untuk menyelesaikan case ini gunakan command  
+
+        iptables -A FORWARD -p tcp --dport 80 -d 10.21.0.16/29 -i eth0 -j DROP
+<b> Testing </b>
+
+- `apt-get install netcat` --> Install netcat di server **Jipangu** dan **Doriki**
+- Pada **Jipangu** dan **Doriki** ketikkan: `nc -l -p 80`
+- Pada **foosha** ketikkan: `nmap -p 80 10.21.0.19` atau `nmap -p 80 10.21.0.18`
+
 
 ## 3. Karena kelompok kalian maksimal terdiri dari 3 orang. Luffy meminta kalian untuk membatasi DHCP dan DNS Server hanya boleh menerima maksimal 3 koneksi ICMP secara bersamaan menggunakan iptables, selebihnya didrop.
 <b> Doriki </b>
@@ -228,10 +237,17 @@ route add -net 10.21.0.16 netmask 255.255.255.248 gw 10.21.0.2
 
 ## 4. Kemudian kalian diminta untuk membatasi akses ke Doriki yang berasal dari subnet Blueno, Cipher, Elena dan Fukuro dengan beraturan sebagai berikut :Akses dari subnet Blueno dan Cipher hanya diperbolehkan pada pukul 07.00 - 15.00 pada hari Senin sampai Kamis.
 <b> Pada Doriki </b>
-- Untuk paket yang berasal dari Blueno dengan command:
+- Untuk paket yang berasal dari **Blueno** dengan command:
         
         iptables -A INPUT -s 10.21.0.128/25 -m time --timestart 07:00 --timestop 15:00 --weekdays Mon,Tue,Wed,Thu -j ACCEPT
         iptables -A INPUT -s 10.21.0.128/25 -j REJECT
+
+- Gunakan command berikut untuk paket yang berasal dari **Chiper** :
+
+        iptables -A INPUT -s 10.21.4.0/22 -m time --timestart 07:00 --timestop 15:00 --weekdays Mon,Tue,Wed,Thu -j ACCEPT
+        iptables -A INPUT -s 10.21.4.0/22 -j REJECT
+        
+<b> Testing </b>
 
 
 ## 5.   Akses dari subnet Elena dan Fukuro hanya diperbolehkan pada pukul 15.01 hingga pukul 06.59 setiap harinya.Selain itu di reject.
