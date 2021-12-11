@@ -19,3 +19,48 @@ Berdasarkan total IP dan netmask yang dibutuhkan, maka dapat menggunakan netmask
 ![VLSM](img/VLSM_3_Tree.png) <br>
 ![VLSM](img/VLSM_4_Table.png) <br>
 
+### Pengaturan Konfigurasi IP untuk masing-masing interface yang ada di setiap device sesuai dengan pembagian subnet pada phon VLSM.
+
+#### Foosha
+```
+```
+
+#### Water7
+```
+```
+
+#### Guanhao
+```
+```
+
+#### Blueno
+```
+```
+
+#### Chiper
+```
+```
+
+#### Elena
+```
+```
+
+#### Fukurou
+```
+```
+
+#### Maingate
+```
+```
+
+#### Jorge
+```
+```
+
+#### Doriki
+```
+```
+
+#### Jipangu
+```
+```
