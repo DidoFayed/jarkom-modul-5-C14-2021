@@ -191,8 +191,15 @@ route add -net 10.21.0.16 netmask 255.255.255.248 gw 10.21.0.2
 
 ### D. Tetapkan IP ke subnet Blueno, Cipher, Fukurou, dan Elena secara dinamis menggunakan bantuan DHCP server. Kemudian ingat bahwa harus diatur DHCP Relay pada router yang menghubungkannya.
 
-### 1. 
-### 5. Akses dari subnet Elena dan Fukuro hanya diperbolehkan pada pukul 15.01 hingga pukul 06.59 setiap harinya.Selain itu di reject.
+## 1.
+
+## 2. 
+
+## 3. 
+
+## 4. 
+
+## 5.   Akses dari subnet Elena dan Fukuro hanya diperbolehkan pada pukul 15.01 hingga pukul 06.59 setiap harinya.Selain itu di reject.
 <b> Pada Doriki </b>
 - Command yang digunakan 
 
@@ -203,3 +210,54 @@ route add -net 10.21.0.16 netmask 255.255.255.248 gw 10.21.0.2
         iptables -A INPUT -s 10.21.1.0/24 -m time --timestart 07:00 --timestop 15:00 -j REJECT
         
  <b> Testing </b>
+ - Fukurou
+        gambar
+ - Elena
+        gambar
+
+## 6.   Karena kita memiliki 2 Web Server, Luffy ingin Guanhao disetting sehingga setiap request dari client yang mengakses DNS Server akan didistribusikan secara bergantian pada Jorge dan Maingate
+<b> Pada Doriki </b>
+- Create domain (DNS) yang mengarah ke IP random (cth: 10.21.8.1) pada file `/etc/bind/named.conf`
+        
+        zone "jarkomC05.com" {
+        type master;
+        file "/etc/bind/jarkom/jarkomC05.com";};
+
+- Create `jarkom` folder 
+        
+        mkdir /etc/bind/jarkom
+- Copy  `db.local` ke dalam file  `/etc/bind/jarkom/jarkomC05.com ` mengguanakan command:
+        
+        cp /etc/bind/db.local /etc/bind/jarkom/jarkomC05.com       
+        
+- Edit file `/etc/bind/jarkom/jarkomC05.com`
+
+        $TTL    604800
+        @       IN      SOA     jarkomC05.com. root.jarkomC05.com. (
+                                2021120705      ; Serial
+                                 604800         ; Refresh
+                                  86400         ; Retry
+                                2419200         ; Expire
+                                 604800 )       ; Negative Cache TTL
+        ;
+        @       IN      NS      jarkomC05.com.
+        @       IN      A       10.21.8.1
+ 
+<b> Pada Guanhou </b>
+
+        iptables -A PREROUTING -t nat -p tcp -d 10.21.8.1 --dport 80 -m statistic --mode nth --every 2 --packet 0 -j DNAT --to-destination 10.21.0.26:80
+        iptables -A PREROUTING -t nat -p tcp -d 10.21.8.1 --dport 80 -j DNAT --to-destination 10.21.0.27:80
+        iptables -t nat -A POSTROUTING -p tcp -d 10.21.0.26 --dport 80 -j SNAT --to-source 192.10.21.1:80
+        iptables -t nat -A POSTROUTING -p tcp -d 10.21.0.27 --dport 80 -j SNAT --to-source 192.10.21.1:80
+        
+<b> Testing </b>
+a.  Install `apt-get install netcat` di **Guanhao, Jorge, Maingate Elena dan Fukurou**
+b.  Command ` nc -l -p 80` pada **Jorge**
+c.  Command `nc -l -p 80` pada **Maingate**
+d.  Command `nc 10.21.8.1 80` pada **Elena** dan **Fukurou**
+e.  Masukkan random input pada **Elena** dan **Fukurou**, maka akan muncul secara bergantian 
+
+ - Fukurou
+        gambar
+ - Elena
+        gambar
