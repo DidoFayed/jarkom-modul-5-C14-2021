@@ -251,13 +251,19 @@ route add -net 10.21.0.16 netmask 255.255.255.248 gw 10.21.0.2
         iptables -t nat -A POSTROUTING -p tcp -d 10.21.0.27 --dport 80 -j SNAT --to-source 192.10.21.1:80
         
 <b> Testing </b>
+
 a.  Install `apt-get install netcat` di **Guanhao, Jorge, Maingate Elena dan Fukurou**
+
 b.  Command ` nc -l -p 80` pada **Jorge**
+
 c.  Command `nc -l -p 80` pada **Maingate**
+
 d.  Command `nc 10.21.8.1 80` pada **Elena** dan **Fukurou**
+
 e.  Masukkan random input pada **Elena** dan **Fukurou**, maka akan muncul secara bergantian 
 
- - Fukurou
+<b> Dokumentasi Testing </b>
+- Fukurou
         gambar
  - Elena
         gambar
