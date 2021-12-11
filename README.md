@@ -15,4 +15,7 @@ Praktikum Jaringan Komputer Modul 5
 ![VLSM](img/VLSM_2_JumlahIP.png) <br>
 Berdasarkan total IP dan netmask yang dibutuhkan, maka dapat menggunakan netmask /21 untuk memberikan pengalamatan IP pada subnet.
 
-3. 
+3. Subnet besar yang dibentuk memiliki NID 10.21.0.0 dengan netmask /21. Selanjutnya menghitung pembagian IP berdasarkan NID dan netmask tersebut menggunakan pohon seperti gambar berikut. <br>
+![VLSM](img/VLSM_3_Tree.png) <br>
+![VLSM](img/VLSM_4_Table.png) <br>
+
