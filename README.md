@@ -191,13 +191,24 @@ route add -net 10.21.0.16 netmask 255.255.255.248 gw 10.21.0.2
 
 ### D. Tetapkan IP ke subnet Blueno, Cipher, Fukurou, dan Elena secara dinamis menggunakan bantuan DHCP server. Kemudian ingat bahwa harus diatur DHCP Relay pada router yang menghubungkannya.
 
-## 1.
+## 1. Agar topologi yang kalian buat dapat mengakses keluar, kalian diminta untuk mengkonfigurasi Foosha menggunakan iptables, tetapi Luffy tidak ingin menggunakan MASQUERADE.
+<b> Pada Foosha </b>
+- Untuk menyesuaikan eth0, gunakan command 
 
-## 2. 
+        iptables -t nat -A POSTROUTING -s 10.21.0.0/16 -o eth0 -j SNAT --to-s (ip eth0)
+- Pada node yng berhubungan berikan command
 
-## 3. 
+        echo nameserver 10.21.122.1 > /etc/resolv.conf
+<b> Dokumentasi </b>
 
-## 4. 
+** IP eth0 akan selalu berganti ketika restart node pada foosha atau restart GNS3 dengan rentang IP yang sudah dijelaskan
+** `ip a` pada Foosha untuk mengetahui eth0
+
+## 2. Kalian diminta untuk mendrop semua akses HTTP dari luar Topologi kalian pada server yang memiliki ip DHCP dan DNS Server demi menjaga keamanan.
+
+## 3. Karena kelompok kalian maksimal terdiri dari 3 orang. Luffy meminta kalian untuk membatasi DHCP dan DNS Server hanya boleh menerima maksimal 3 koneksi ICMP secara bersamaan menggunakan iptables, selebihnya didrop.
+
+## 4. Kemudian kalian diminta untuk membatasi akses ke Doriki yang berasal dari subnet Blueno, Cipher, Elena dan Fukuro dengan beraturan sebagai berikut :Akses dari subnet Blueno dan Cipher hanya diperbolehkan pada pukul 07.00 - 15.00 pada hari Senin sampai Kamis.
 
 ## 5.   Akses dari subnet Elena dan Fukuro hanya diperbolehkan pada pukul 15.01 hingga pukul 06.59 setiap harinya.Selain itu di reject.
 <b> Pada Doriki </b>
