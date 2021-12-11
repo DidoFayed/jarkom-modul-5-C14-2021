@@ -134,9 +134,9 @@ iface eth0 inet static
 ```
 #auto eth0
 #iface eth0 inet static
-#       address 10.21.1.2
-#       netmask 255.255.255.0
-#       gateway 10.21.1.1
+       address 10.21.1.2
+       netmask 255.255.255.0
+       gateway 10.21.1.1
 
 auto eth0
 iface eth0 inet dhcp
@@ -191,3 +191,15 @@ route add -net 10.21.0.16 netmask 255.255.255.248 gw 10.21.0.2
 
 ### D. Tetapkan IP ke subnet Blueno, Cipher, Fukurou, dan Elena secara dinamis menggunakan bantuan DHCP server. Kemudian ingat bahwa harus diatur DHCP Relay pada router yang menghubungkannya.
 
+### 1. 
+### 5. Akses dari subnet Elena dan Fukuro hanya diperbolehkan pada pukul 15.01 hingga pukul 06.59 setiap harinya.Selain itu di reject.
+<b> Pada Doriki </b>
+- Command yang digunakan 
+
+        iptables -A INPUT -s 10.21.2.0/23 -m time --timestart 07:00 --timestop 15:00 -j REJECT
+<b> Pada Fukorou </b>
+- Command yang digunakan 
+
+        iptables -A INPUT -s 10.21.1.0/24 -m time --timestart 07:00 --timestop 15:00 -j REJECT
+        
+ <b> Testing </b>
