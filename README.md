@@ -369,9 +369,9 @@ Keterangan:
         iptables -A INPUT -s 10.21.1.0/24 -m time --timestart 07:00 --timestop 15:00 -j REJECT
         
  <b> Testing </b>
- - Fukurou
+ - Fukurou <br>
         ![Fukurou](img/5-Fukurou.png)
- - Elena
+ - Elena <br>
         ![Elena](img/5-Elena.png)
 
 ## 6.   Karena kita memiliki 2 Web Server, Luffy ingin Guanhao disetting sehingga setiap request dari client yang mengakses DNS Server akan didistribusikan secara bergantian pada Jorge dan Maingate
