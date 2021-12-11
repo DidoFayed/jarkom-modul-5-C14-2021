@@ -370,9 +370,9 @@ Keterangan:
         
  <b> Testing </b>
  - Fukurou
-        ![Fukurou](img/5-Fukurou.PNG)
+        ![Fukurou](img/5-Fukurou.png)
  - Elena
-        ![Elena](img/5-Elena.PNG)
+        ![Elena](img/5-Elena.png)
 
 ## 6.   Karena kita memiliki 2 Web Server, Luffy ingin Guanhao disetting sehingga setiap request dari client yang mengakses DNS Server akan didistribusikan secara bergantian pada Jorge dan Maingate
 <b> Pada Doriki </b>
