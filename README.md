@@ -178,3 +178,16 @@ iface eth0 inet static
        gateway 10.21.0.17
 ```
 
+### C. Routing
+#### Foosha
+```
+route add -net 10.21.1.0 netmask 255.255.255.0 gw 10.21.0.6
+route add -net 10.21.2.0 netmask 255.255.254.0 gw 10.21.0.6
+route add -net 10.21.0.24 netmask 255.255.255.248 gw 10.21.0.6
+route add -net 10.21.4.0 netmask 255.255.252.0 gw 10.21.0.2
+route add -net 10.21.0.128 netmask 255.255.255.128 gw 10.21.0.2
+route add -net 10.21.0.16 netmask 255.255.255.248 gw 10.21.0.2
+```
+
+### D. Tetapkan IP ke subnet Blueno, Cipher, Fukurou, dan Elena secara dinamis menggunakan bantuan DHCP server. Kemudian ingat bahwa harus diatur DHCP Relay pada router yang menghubungkannya.
+
