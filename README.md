@@ -203,13 +203,36 @@ route add -net 10.21.0.16 netmask 255.255.255.248 gw 10.21.0.2
 
 ** IP eth0 akan selalu berganti ketika restart node pada foosha atau restart GNS3 dengan rentang IP yang sudah dijelaskan
 
-** `ip a` pada Foosha untuk mengetahui eth0
+** `ip a` pada Foosha untuk mengetahui eth0 
 
 ## 2. Kalian diminta untuk mendrop semua akses HTTP dari luar Topologi kalian pada server yang memiliki ip DHCP dan DNS Server demi menjaga keamanan.
 
 ## 3. Karena kelompok kalian maksimal terdiri dari 3 orang. Luffy meminta kalian untuk membatasi DHCP dan DNS Server hanya boleh menerima maksimal 3 koneksi ICMP secara bersamaan menggunakan iptables, selebihnya didrop.
+<b> Doriki </b>
+- Command :
+
+        iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+        iptables -A INPUT -p icmp -m connlimit --connlimit-above 3 --connlimit-mask 0 -j DROP
+        
+- Untuk mengecek bisa dilakukan dengan masuk ke 4 node berbeda.
+- Ping ke arah Jipangu secara bersamaan.
+
+<b> Dokumentasi </b>
+- Maingate
+
+- Guanhou
+
+- Jorge
+
+- Elena
 
 ## 4. Kemudian kalian diminta untuk membatasi akses ke Doriki yang berasal dari subnet Blueno, Cipher, Elena dan Fukuro dengan beraturan sebagai berikut :Akses dari subnet Blueno dan Cipher hanya diperbolehkan pada pukul 07.00 - 15.00 pada hari Senin sampai Kamis.
+<b> Pada Doriki </b>
+- Untuk paket yang berasal dari Blueno dengan command:
+        
+        iptables -A INPUT -s 10.21.0.128/25 -m time --timestart 07:00 --timestop 15:00 --weekdays Mon,Tue,Wed,Thu -j ACCEPT
+        iptables -A INPUT -s 10.21.0.128/25 -j REJECT
+
 
 ## 5.   Akses dari subnet Elena dan Fukuro hanya diperbolehkan pada pukul 15.01 hingga pukul 06.59 setiap harinya.Selain itu di reject.
 <b> Pada Doriki </b>
@@ -259,8 +282,8 @@ route add -net 10.21.0.16 netmask 255.255.255.248 gw 10.21.0.2
 
         iptables -A PREROUTING -t nat -p tcp -d 10.21.8.1 --dport 80 -m statistic --mode nth --every 2 --packet 0 -j DNAT --to-destination 10.21.0.26:80
         iptables -A PREROUTING -t nat -p tcp -d 10.21.8.1 --dport 80 -j DNAT --to-destination 10.21.0.27:80
-        iptables -t nat -A POSTROUTING -p tcp -d 10.21.0.26 --dport 80 -j SNAT --to-source 192.10.21.1:80
-        iptables -t nat -A POSTROUTING -p tcp -d 10.21.0.27 --dport 80 -j SNAT --to-source 192.10.21.1:80
+        iptables -t nat -A POSTROUTING -p tcp -d 10.21.0.26 --dport 80 -j SNAT --to-source 10.21.8.1:80
+        iptables -t nat -A POSTROUTING -p tcp -d 10.21.0.27 --dport 80 -j SNAT --to-source 10.21.8.1:80
         
 <b> Testing </b>
 
