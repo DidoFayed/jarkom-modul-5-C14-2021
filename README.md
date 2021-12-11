@@ -11,7 +11,7 @@ Praktikum Jaringan Komputer Modul 5
 1. Melakukan subnetting pada topologi yang diberikan. Sehingga terbentuk 8 subnet
 ![VLSM](img/VLSM_1_Subnetting.png)
 
-2. Menentukan jumlah alamat IP yang dibutuhkan oleh tiap subnet dan melakukan labelling netmask berdasarkan jumlah IP yang dibutuhkan.
+2. Menentukan jumlah alamat IP yang dibutuhkan oleh tiap subnet dan melakukan labelling netmask berdasarkan jumlah IP yang dibutuhkan. <br>
 ![VLSM](img/VLSM_2_JumlahIP.png) <br>
 Berdasarkan total IP dan netmask yang dibutuhkan, maka dapat menggunakan netmask /21 untuk memberikan pengalamatan IP pada subnet.
 
